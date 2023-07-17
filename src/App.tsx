@@ -1,13 +1,5 @@
-import React from 'react';
-
-
-function App() {
-
-	return (
-		<div>
-			<h1 className="text-lg text-blue-500">Hello World</h1>
-		</div>
-	);
+import { routes } from './router';
+import { useRoutes } from 'react-router-dom';
+export default function App(){
+	return useRoutes(routes);
 }
-
-export default App;
