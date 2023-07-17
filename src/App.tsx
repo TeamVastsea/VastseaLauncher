@@ -1,5 +1,11 @@
-import { routes } from './router';
+import React from 'react';
+import { RouterGuard, routes } from './router';
 import { useRoutes } from 'react-router-dom';
 export default function App(){
-	return useRoutes(routes);
+	const elements = useRoutes(routes);
+	return (
+		<RouterGuard>
+			{elements}
+		</RouterGuard>
+	);
 }

@@ -1,17 +1,18 @@
-// import { service } from './service';
-import { fetch } from '@tauri-apps/api/http';
-import { baseUrl } from './service';
+import { service } from './service';
 
 export default {
 	ms(code: string){
-		return fetch(baseUrl + '/users', {
-			query: {
+		return service('/users', {
+			headers: {
 				code
 			},
 			method: 'GET'
 		});
-		// return service.get('/users', {
-		// 	params: new URLSearchParams({code})
-		// });
+	},
+	ms_oauth(){
+		if (import.meta.env.DEV){
+			return 'test_code';
+		}
+		throw new Error('mock only can running at dev env');
 	}
 };
