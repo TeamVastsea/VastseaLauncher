@@ -40,13 +40,12 @@ fn main() {
 	simple_log::new(config).expect("Cannot init logger");
 
 	info!("Loading...");
-	
 	tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
 			greet,
 			login::window::auth_window_create,
 			login::window::auth_window_destroy,
-			login::credential::auth_credit_get,
+			login::credential::auth_credential_get,
 			log::log_debug,
 			log::log_info,
 			log::log_error

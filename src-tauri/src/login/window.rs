@@ -1,7 +1,6 @@
 use simple_log::error;
 use tauri::{Runtime, Manager};
 
-// let OAUTH_URL = "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?client_id={}&response_type=code&redirect_uri=https%3A%2F%2Fmccteam.github.io%2Fredirect.html&scope=XboxLive.signin%20offline_access%20openid%20email&prompt=select_account&response_mode=fragment";
 #[tauri::command]
 pub async fn auth_window_create<R: Runtime>(app: tauri::AppHandle<R>){
 	let client_id: String = String::from("646004c1-0054-4157-b5b5-4cb89f6eaa1a");

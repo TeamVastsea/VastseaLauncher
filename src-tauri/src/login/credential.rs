@@ -17,11 +17,6 @@ pub async fn auth_credential_get(code: String) -> Result<Credentials, String> {
 	};
 
 	debug!("response: {:?}", backend_response);
-
-	// let response = match refresh_access_token(response.refresh_token.unwrap()).await {
-	// 	Ok(a) => { a }
-	// 	Err(err) => { return Err(err.to_string()); }
-	// };
 	
 	let credentials = Credentials {
 		access_token: response.access_token.unwrap().to_string(),
