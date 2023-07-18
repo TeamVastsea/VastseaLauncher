@@ -1,6 +1,6 @@
 import { fetch, FetchOptions } from '@tauri-apps/api/http';
 export const baseUrl = import.meta.env.DEV ? 'http://localhost:3000' : 'http://main.vastsea.cc:9527';
-export const service = (url:string, option:FetchOptions) => {
+export const service = (url:string, option:FetchOptions, baseUrl?: string) => {
 	const requestUrl = `${baseUrl}${url}`;
 	return new Promise((resolve,reject) => {
 		fetch(requestUrl, option)
