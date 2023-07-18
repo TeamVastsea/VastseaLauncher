@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
 import Login from './pages/login';
-import { Home } from './pages/home';
+import Home from './pages/home';
 import { useLocation, useNavigate } from 'react-router-dom';
 interface Route {
 	path: string,
