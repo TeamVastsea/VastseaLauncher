@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import { appWindow } from '@tauri-apps/api/window';
 import { invoke } from '@tauri-apps/api';
-import api from '../api';
+import {debug} from '../api/log';
 
 
 export default function Home(){
@@ -13,18 +13,17 @@ export default function Home(){
 			setCode(
 				url.href.replace('https://mccteam.github.io/redirect.html#code=', '')
 			);
-			invoke('destory_oauth_window');
+			invoke('auth_window_destroy').then(() => {
+				debug('destroyed');
+			});
 		}
 	});
 	const login = async () => {		
-		await invoke('oauth');
+		await invoke('auth_window_create');
 	};
 	useEffect(()=>{
 		if (code){
-			api.auth.ms(code)
-				.then((res) => {
-					console.log(res.data);
-				});
+			invoke('auth_credential_get', {code: code}).then((res) => console.log(res));
 		}
 	}, [code]);
 	return (
