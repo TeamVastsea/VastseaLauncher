@@ -4,6 +4,7 @@ import SkinView from '../components/common/skinview';
 import api from '../api';
 import { useRequest,useMount, useSafeState } from 'ahooks';
 import { Outlet } from 'react-router-dom';
+import { Footer } from '../components/footer';
 
 
 
@@ -31,7 +32,9 @@ export default function Home(){
 				</div>
 				<SkinView name={name} width={300} height={300} background='transparent' walk control uuid={uuid}/>
 			</div>
-			<div className='w-full h-14 flex-shrink-0 bg-red-500'></div>
+			<div className='w-full h-16 flex-shrink-0'>
+				<Footer />
+			</div>
 		</div>
 	);
 }
