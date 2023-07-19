@@ -11,12 +11,18 @@ pub async fn auth_credential_get(code: String) -> Result<Credentials, String> {
 		Err(err) => { return Err(err); }
 	};
 	
-	let backend_response = match reqwest::get(SERVER_URL.to_string() + "/users?atoken=" + response.access_token.clone().unwrap().as_str() + "&token=true").await.unwrap().json::<HashMap<String, String>>().await {
+	let backend_response = match reqwest::get(SERVER_URL.to_string() + "/users?atoken=" + response.access_token.clone().unwrap().as_str() + "&token=true").await {
 		Ok(a) => { a }
 		Err(err) => { return Err(err.to_string()); }
 	};
-
-	debug!("response: {:?}", backend_response);
+	
+	if backend_response.status() != 200 {
+		return Err("Backend error: ".to_string() + backend_response.text().await.unwrap().as_str());
+	}
+	
+	let backend_response = backend_response.json::<HashMap<String, String>>().await.unwrap();
+	
+	println!("{:?}", backend_response);
 	
 	let credentials = Credentials {
 		access_token: response.access_token.unwrap().to_string(),
