@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect } from 'react';
 import Login from './pages/login';
 import Home from './pages/home';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { News } from './pages/news/news';
 interface Route {
 	path: string,
 	name: string,
@@ -9,12 +10,20 @@ interface Route {
 	children?: Route[],
 	auth?: boolean
 }
-export const routes = [
+export const routes:Route[] = [
 	{
 		name: 'Home',
 		element: <Home />,
 		path: '/',
-		auth: true
+		auth: true,
+		children: [
+			{
+				name: 'news',
+				path: '/',
+				auth: true,
+				element: <News />,
+			},
+		]
 	},
 	{
 		name: 'Login',

@@ -1,18 +1,18 @@
 import React from 'react';
-export function Header(){
+export function Header({className, uuid}: {className:string, uuid: string}){
 	return (
 		<div
-			className='w-full h-14'
+			className={className}
 		>
 			<div className='w-fit h-full mr-0 ml-auto flex'>
 				<div className='w-14 h-full'>
-					<img src="https://via.placeholder.com/56" alt=""/>
+					<img src={`https://crafatar.com/avatars/${uuid}?size=56`} alt="" />
 				</div>
-				<div className=' max-w-[64px] w-full h-full dark:text-white'>
+				<div className='mx-2 w-fit h-full text-gray-900'>
 					<div className='truncate'>
 						<span>GaoNeng-wWw</span>
 					</div>
-					<span className='w-fit mx-auto block'>已登录</span>
+					<span className='w-fit'>已登录</span>
 				</div>
 			</div>
 		</div>
