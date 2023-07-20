@@ -22,9 +22,6 @@ export function Footer(){
 			children: 'Setting'
 		},
 	];
-	const onMouseEnter = (e: React.MouseEventHandler<HTMLAnchorElement>) => {
-		console.log(e);
-	};
 	return (
 		<div className="w-full h-full flex justify-end items-center gap-4 px-4">
 			{
@@ -32,7 +29,12 @@ export function Footer(){
 					return (
 						<FooterBlock key={idx}>
 							<NavLink to={to} className={
-								({isActive}) => `before:block transition-colors ${isActive ? 'before:w-full before:h-1 before:bg-orange-500 before:absolute before:bottom-0' : ''}`
+								({isActive}) => `
+								before:w-full before:h-1 before:scale-x-0 before:rounded-2xl before:-skew-x-6
+								before:block before:transition-transform before:origin-left before:bg-orange-500 before:absolute before:-bottom-1 
+								${isActive ? 'before:scale-x-100' : ''}
+								hover:before:scale-x-100 
+								`
 							} onMouseEnter={console.log}>
 								{children}
 							</NavLink>
