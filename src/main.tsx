@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './assets/main.css';
+import './assets/css/main.css';
 
 import App from './App';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter } from 'react-router-dom';
+import NavBar from './components/nav-bar';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<div className='w-screen min-h-screen flex m-0 p-0 bg-gray-200'>
-			<BrowserRouter>
+		<BrowserRouter>
+			<div className='w-[800px] h-[600px] bg-[url("public/img/bg.png")] bg-cover rounded-[12px]'>
+				<NavBar />
 				<App />
 				<Toaster />
-			</BrowserRouter>
-		</div>
+			</div>
+		</BrowserRouter>
 	</React.StrictMode>,
 );

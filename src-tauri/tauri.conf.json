@@ -18,7 +18,9 @@
         "open": true
       },
 	  "window":{
-		"create": true
+		"create": true,
+		"minimize": true,
+		"close": true
 	  },
 	  "http": {
 		"all": false,
@@ -71,8 +73,12 @@
         "fullscreen": false,
         "resizable": true,
         "title": "tauri-app",
-        "width": 800,
-        "height": 600
+        "width": 900,
+        "height": 700,
+		"transparent": true,
+		"decorations": false,
+		"center": true,
+		"skipTaskbar": false
       }
     ]
   }
