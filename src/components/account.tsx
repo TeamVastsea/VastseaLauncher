@@ -5,7 +5,7 @@ import { Setting } from './common/svg/setting';
 export function Account(){
 	return (
 		<div className='
-			flex flex-col gap-6 w-[220px] rounded-xl mt-auto mb-0 p-6 
+			flex flex-col gap-6 w-[220px] rounded-xl mt-auto mb-0 p-6 min-w-[242px]
 			border border-white bg-[rgba(255,255,255,0.25)] backdrop-blur-2xl shadow-[0px_2px_2px_rgba(0,0,0,.10)]
 			'>
 			<div className='text-center'>
@@ -21,11 +21,11 @@ export function Account(){
 			<div className='w-full flex justify-center'>
 				<Button text='添加账号' icon={<Microsoft />} shadow='md' className='mx-auto'/>
 			</div>
-			<hr className='bg-white' />
-			<div className='w-full flex justify-center py-3 bg-[#00A4EF] rounded-[10px]'>
-				<Button text='启动游戏' icon={<Play fill='#fff' />} shadow='md'  className='py-0 rounded-r-none font-sans pr-0 bg-transparent text-white '/>
+			<hr className='bg-white w-[172px] mx-auto' />
+			<div className='mx-auto max-w-[172px] w-full flex justify-center p-3 bg-[#00A4EF] rounded-[10px]'>
+				<Button text='启动游戏' icon={<Play fill='#fff' />} shadow='md'  className='rounded-r-none font-sans p-0 bg-transparent text-white '/>
 				<div className='w-px h-full bg-white mx-2'></div>
-				<Button icon={<Setting fill='#fff' />} shadow='md' className='py-0 rounded-l-none pl-0 bg-transparent'/>
+				<Button icon={<Setting fill='#fff' />} shadow='md' className='rounded-l-none bg-transparent p-0'/>
 			</div>
 		</div>
 	);
