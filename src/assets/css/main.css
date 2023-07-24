@@ -10,6 +10,10 @@
 	src: url("../fonts/InstrumentSans.ttf");
 	font-style: normal;
 }
+@font-face {
+	font-family: "NotoSans-Bold";
+	src: url("../fonts/NotoSans-Bold.ttf");
+}
 html,body{
 	width: 800px;
 	height: 600px;
