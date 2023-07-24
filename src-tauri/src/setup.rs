@@ -31,7 +31,7 @@ pub fn setup(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error
 			Some(value) => value.into_string().unwrap(),
 			None => String::from("")
 		};
-		let max_memory: i64 = (sys.total_memory() / 1073741824).try_into().unwrap();
+		let max_memory: i64 = (sys.total_memory() / 1024 / 1024).try_into().unwrap();
 		let json = Setting {
 			java_home,
 			memory: 4096,

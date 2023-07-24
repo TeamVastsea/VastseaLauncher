@@ -39,6 +39,7 @@ pub fn file_exists(path: &str, file_name: &str) -> Result<bool, String>{
 
 pub fn create_fold(path: &str, fold: &str) -> Result<bool, String> {
 	let mut new_path = path.to_string();
+	new_path += "/";
 	new_path += fold;
 	let state: Result<bool, String> = match std::fs::create_dir_all(new_path) {
 		Ok(res) => Ok(true),
