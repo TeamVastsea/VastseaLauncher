@@ -29,6 +29,10 @@
 			"http://*",
 			"https://*"
 		]
+	  },
+	  "dialog": {
+		"all": false,
+		"open": true
 	  }
     },
     "bundle": {
@@ -76,7 +80,7 @@
         "width": 900,
         "height": 700,
 		"transparent": true,
-		"decorations": false,
+		"decorations": true,
 		"center": true,
 		"skipTaskbar": false
       }

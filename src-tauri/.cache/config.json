@@ -1,1 +1,1 @@
-{"java_home":"I:\\pkg\\openjdk-19.0.2_windows-x64_bin\\jdk-19.0.2","memory":4096,"max_memory":7,"width":800,"height":600,"full_screen":false}
+{"java":[{"path":"I:\\pkg\\openjdk-19.0.2_windows-x64_bin\\jdk-19.0.2","exe":"javaw.exe","version":"19.0.2"}],"used_java":"I:\\pkg\\openjdk-19.0.2_windows-x64_bin\\jdk-19.0.2","memory":4096,"max_memory":8129,"width":800,"height":600,"full_screen":false}

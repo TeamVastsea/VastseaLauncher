@@ -36,7 +36,7 @@ fn main() {
 		.build();
 	simple_log::new(config).expect("Cannot init logger");
 
-	info!("Loading...");
+	// info!("Loading...");
 	tauri::Builder::default()
 		.setup(setup::setup)
         .invoke_handler(tauri::generate_handler![
@@ -48,6 +48,7 @@ fn main() {
 			log::log_info,
 			log::log_error,
 			user::setting::get_setting,
+			user::setting::update_setting
 		])
 		
         .run(generate_context!())

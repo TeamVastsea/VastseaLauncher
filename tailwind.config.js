@@ -24,7 +24,8 @@ export default {
 			},
 			fontFamily:{
 				'Source_man': ['Source Han'],
-				'Instrument_sans':['Instrument sans']
+				'Instrument_sans':['Instrument sans'],
+				'Noto_Sans': ['NotoSans-Bold']
 			},
 		},
 	},
