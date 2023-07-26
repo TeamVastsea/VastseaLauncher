@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect } from 'react';
 import Login from './pages/login';
 import Home from './pages/home';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Setting from './pages/setting';
 interface Route {
 	path: string,
 	name: string,
@@ -14,6 +15,12 @@ export const routes:Route[] = [
 		name: 'Home',
 		element: <Home />,
 		path: '/',
+		auth: true
+	},
+	{
+		name: 'Setting',
+		element: <Setting />,
+		path: '/setting',
 		auth: true,
 	},
 	{

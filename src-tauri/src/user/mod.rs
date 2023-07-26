@@ -1,11 +1,9 @@
-use std::borrow::Cow;
-
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
 
 
 pub mod microsoft;
 pub mod minecraft;
+pub mod setting;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct UserInfo {//_id: mc uuid

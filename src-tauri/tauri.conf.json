@@ -29,6 +29,10 @@
 			"http://*",
 			"https://*"
 		]
+	  },
+	  "dialog": {
+		"all": false,
+		"open": true
 	  }
     },
     "bundle": {
