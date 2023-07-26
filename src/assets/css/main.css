@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+	font-family: "Source Han";
+	src: url("../fonts/SourceHanSans-VF.ttf.ttc");
+}
+@font-face {
+	font-family: 'Instrument sans';
+	src: url("../fonts/InstrumentSans.ttf");
+	font-style: normal;
+}
+html,body{
+	width: 800px;
+	height: 600px;
+}
+body{
+	overflow: overlay;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+* {
+	font-family: "Source Han";
+}
+
+::-webkit-scrollbar{
+	width: 0;
+	background: transparent;
+}

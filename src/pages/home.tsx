@@ -1,39 +1,16 @@
 import React from 'react';
-import { Header } from '../components/header';
-import SkinView from '../components/common/skinview';
-import api from '../api';
-import { useRequest,useMount, useSafeState } from 'ahooks';
-import { Outlet } from 'react-router-dom';
-import { Footer } from '../components/footer';
-
-
+import { Account } from '../components/account';
+import { NewsPaper } from '../components/common/svg';
 
 export default function Home(){
-	const name = 'Snowball_233';
-	const [uuid, setUUID] = useSafeState('');
-	const {runAsync:getUUID} = useRequest(api.skin.uuid, {
-		cacheKey: 'api.skin.uuid',
-		manual: true,
-		onSuccess({id}){
-			setUUID(id);
-		},
-		onError(){}
-	});
-	useMount(()=>{
-		getUUID(name);
-		// setImgUrl('img/default.png');
-	});
 	return (
-		<div className="w-full h-full flex flex-col">
-			<Header className='w-full h-14 flex-shrink-0 flex-grow-0' uuid={uuid} />
-			<div className='w-full max-h-full py-4 flex flex-grow justify-center items-center'>
-				<div className='max-w-sm w-full'>
-					<Outlet />
-				</div>
-				<SkinView name={name} width={300} height={300} background='transparent' walk control uuid={uuid}/>
+		<div className='flex flex-grow w-full px-16 pt-[39.4px] pb-[54px]'>
+			<div className='h-full flex flex-col flex-grow'>
+				<img src='img/logo.svg' className='w-[200px] h-[35px]'/>
+				<Account />
 			</div>
-			<div className='w-full h-16 flex-shrink-0'>
-				<Footer />
+			<div className='w-12 h-12 mb-0 mt-auto bg-[rgba(255,255,255,0.25)] backdrop-blur-2xl shadow-[0px_2px_2px_rgba(0,0,0,.10)] rounded-[10px]'>
+				<NewsPaper fill='#fff' className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2' />
 			</div>
 		</div>
 	);

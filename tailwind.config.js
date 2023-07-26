@@ -17,8 +17,15 @@ export default {
 					200: '#6ACBEB',
 					100: '#93DDF5',
 					50: '#C0EFFF'
-				}
-			}
+				},
+			},
+			blur: {
+				'2lg': '32px'
+			},
+			fontFamily:{
+				'Source_man': ['Source Han'],
+				'Instrument_sans':['Instrument sans']
+			},
 		},
 	},
 	plugins: [
