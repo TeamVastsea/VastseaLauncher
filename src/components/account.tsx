@@ -23,9 +23,9 @@ export function Account(){
 			</div>
 			<hr className='bg-white w-[172px] mx-auto' />
 			<div className='mx-auto max-w-[172px] w-full flex justify-center p-3 bg-[#00A4EF] rounded-[10px]'>
-				<Button text='启动游戏' icon={<Play fill='#fff' />} shadow='md'  className='rounded-r-none font-sans p-0 bg-transparent text-white '/>
+				<Button text='启动游戏' icon={<Play fill='#fff' />} shadow='md' className='rounded-r-none font-sans px-0 py-0 bg-transparent text-white '/>
 				<div className='w-px h-full bg-white mx-2'></div>
-				<Button icon={<Setting fill='#fff' />} shadow='md' className='rounded-l-none bg-transparent p-0'/>
+				<Button icon={<Setting fill='#fff' />} shadow='md' className='rounded-l-none bg-transparent px-0 py-0'/>
 			</div>
 		</div>
 	);
