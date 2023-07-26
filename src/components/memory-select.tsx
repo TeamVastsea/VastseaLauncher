@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { useDebounceFn} from 'ahooks';
-export default function MemorySelect(props: {setting: Partial<Setting>, onChange: (memory: number)=>void}){
+export default function MemorySelect(props: {setting:Partial<Setting>, onChange: (memory: number)=>void}){
 	const {setting, onChange} = props;
 	const [progress, setProgress] = useState(0);
-	const [memory, setMemory] = useState(setting.memory??4096);
-	console.log(setting.memory, memory);
+	const [memory, setMemory] = useState(setting.memory);
 	const onMemoryChange = useDebounceFn((e: React.FormEvent<HTMLDivElement>) => {
 		const ele = e.target as HTMLElement;
 		if (ele.innerText !== ''){
@@ -24,10 +23,13 @@ export default function MemorySelect(props: {setting: Partial<Setting>, onChange
 				((memory ?? 0) / (setting.max_memory ?? 1) * 100).toString()
 			)
 		);
-	}, [memory, setting.max_memory]);
+	}, [memory, setting.max_memory, setting]);
+	useEffect(()=>{
+		setMemory(setting.memory);
+	}, [setting.memory]);
 	return (
 		<div className='flex flex-col items-start gap-1 text-white'>
-			<span className='font-Noto_Sans font-[600] text-base leading-none'>运行内存</span>
+			<span className='font-Noto_Sans text-base leading-none'>运行内存</span>
 			<div className='flex gap-6 items-center'>
 				<div className='flex gap-[10px] items-center'>
 					<div 
@@ -35,9 +37,9 @@ export default function MemorySelect(props: {setting: Partial<Setting>, onChange
 						contentEditable
 						suppressContentEditableWarning
 						className='
-											flex min-w-[36px] min-h-[36px] py-2 px-4 rounded-md border-2 border-solid border-[rgba(255,255,255,0.5)]
-											outline-none
-										'
+							flex min-w-[36px] min-h-[36px] py-2 px-4 rounded-md border-2 border-solid border-[rgba(255,255,255,0.5)]
+							outline-none
+						'
 						onInput={onMemoryChange.run}
 					>
 						{memory}

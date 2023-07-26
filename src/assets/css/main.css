@@ -11,8 +11,28 @@
 	font-style: normal;
 }
 @font-face {
+	font-family: "NotoSans-Light";
+	src: url("../fonts/NotoSansSC-Light.otf");
+}
+@font-face {
+	font-family: "NotoSans-Thin";
+	src: url("../fonts/NotoSansSC-Thin.otf");
+}
+@font-face {
+	font-family: "NotoSans-Regular";
+	src: url("../fonts/NotoSansSC-Regular.otf");
+}
+@font-face {
+	font-family: "NotoSans-Medium";
+	src: url("../fonts/NotoSansSC-Medium.otf");
+}
+@font-face {
 	font-family: "NotoSans-Bold";
 	src: url("../fonts/NotoSans-Bold.ttf");
+}
+@font-face {
+	font-family: "NotoSans-Black";
+	src: url("../fonts/NotoSansSC-Black.otf");
 }
 html,body{
 	width: 800px;
@@ -26,7 +46,8 @@ body{
 	justify-content: center;
 }
 * {
-	font-family: "Source Han";
+	/* font-family: "Source Han"; */
+	font-family: 'Noto Sans SC', sans-serif;
 }
 
 ::-webkit-scrollbar{

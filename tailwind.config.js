@@ -25,7 +25,12 @@ export default {
 			fontFamily:{
 				'Source_man': ['Source Han'],
 				'Instrument_sans':['Instrument sans'],
-				'Noto_Sans': ['NotoSans-Bold']
+				'Noto_Sans_Light': ['NotoSans-Light'],
+				'Noto_Sans_Thin': ['NotoSans-Thin'],
+				'Noto_Sans': ['NotoSans-Regular'],
+				'Noto_Sans_Medium': ['NotoSans-Medium'],
+				'Noto_Sans_Bold': ['NotoSans-Bold'],
+				'Noto_Sans_Black': ['NotoSans-Black']
 			},
 		},
 	},

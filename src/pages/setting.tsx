@@ -5,6 +5,7 @@ import JavaSelect from '../components/java-select';
 import { useMount } from 'ahooks';
 import { invoke } from '@tauri-apps/api';
 import MemorySelect from '../components/memory-select';
+import ResolutionSetting from '../components/resolution';
 export default function Setting(){
 	const [setting, setSetting] = useAtom(settingAtom);
 	useMount(()=>{
@@ -28,16 +29,36 @@ export default function Setting(){
 	const onMemoryChange = (memory: number) => {
 		setSetting({...setting, memory});
 	};
+	const onResolutionChange = (type: 'width' | 'height', value: number) => {
+		if (type === 'width'){
+			setSetting({
+				...setting,
+				width: value
+			});
+		} else {
+			setSetting({
+				...setting,
+				height: value
+			});
+		}
+	};
+	const onFullScreen = (fullScreen: boolean) => {
+		setSetting({
+			...setting,
+			full_screen: fullScreen
+		});
+	};
 	return (
 		<div className="w-full h-full px-[12px] pt-[11px] pb-[13px]">
 			<div className="w-full h-full rounded-xl bg-[rgba(255,255,255,0.15)] backdrop-blur-2lg overflow-hidden px-[30px] py-[15px]">
 				<div className='w-[385px] h-full'>
 					<div className='mb-6'>
-						<h1 className='text-3xl leading-0 text-white font-NotoSans-Bold font-bold'>设置</h1>
+						<h1 className='text-3xl leading-0 text-white font-Noto_Sans font-bold'>设置</h1>
 					</div>
 					<div className='flex gap-6 flex-col'>
 						<JavaSelect setting={setting} onAdd={onJavaAdd} onSelect={onJavaSelect}/>
 						<MemorySelect setting={setting} onChange={onMemoryChange} />
+						<ResolutionSetting setting={setting} onChange={onResolutionChange} onFullScreen={onFullScreen} />
 					</div>
 				</div>
 			</div>

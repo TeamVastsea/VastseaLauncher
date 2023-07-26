@@ -47,7 +47,7 @@ export default function JavaSelect(props: {setting: Partial<Setting>, onAdd: (ja
 	};
 	return (
 		<div className='flex flex-col items-start gap-1 text-white'>
-			<span className='font-Noto_Sans font-[600] text-base leading-none'>Java路径</span>
+			<span className='font-Noto_Sans text-base leading-none'>Java路径</span>
 			<div className='
 						min-h-[36px] max-w-[350px] w-auto h-auto py-2 px-[10px]
 						rounded-md border-2 border-solid border-[rgba(255,255,255,0.5)] cursor-pointer
