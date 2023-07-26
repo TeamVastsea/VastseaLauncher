@@ -13,9 +13,15 @@ interface Route {
 export const routes:Route[] = [
 	{
 		name: 'Home',
-		element: <Setting />,
+		element: <Home />,
 		path: '/',
 		auth: true
+	},
+	{
+		name: 'Setting',
+		element: <Setting />,
+		path: '/setting',
+		auth: true,
 	},
 	{
 		name: 'Login',
