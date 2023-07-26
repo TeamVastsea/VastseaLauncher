@@ -80,7 +80,7 @@
         "width": 900,
         "height": 700,
 		"transparent": true,
-		"decorations": true,
+		"decorations": false,
 		"center": true,
 		"skipTaskbar": false
       }
