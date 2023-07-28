@@ -1,5 +1,4 @@
 import React, { ReactNode, useEffect } from 'react';
-import Login from './pages/login';
 import Home from './pages/home';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Setting from './pages/setting';
@@ -22,11 +21,6 @@ export const routes:Route[] = [
 		element: <Setting />,
 		path: '/setting',
 		auth: true,
-	},
-	{
-		name: 'Login',
-		element: <Login />,
-		path: '/login',
 	}
 ];
 const getCurrentRouterMap = (routers: Route[], path: string): Route => {
