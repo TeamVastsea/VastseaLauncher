@@ -22,9 +22,18 @@ pub async fn auth_window_create<R: Runtime>(app: tauri::AppHandle<R>){
 		if url_str.contains("https://mccteam.github.io/redirect.html#code=") {
 			let code = url_str.replace("https://mccteam.github.io/redirect.html#code=", "");
 			auth_window_destroy(app.app_handle());
-			let credit = block_on(auth_credential_get(code)).unwrap();
-			
-			debug!("{}", serde_json::to_string(&credit).unwrap())
+			let main_window = app.get_window("main");
+			match block_on(auth_credential_get(code)) {
+				Ok(res)=> {
+					main_window.unwrap().emit("auth_success", res).unwrap();
+					true
+				},
+				Err(err) => {
+					main_window.unwrap().emit("auth_fail", err).unwrap();
+					true
+				}
+			};
+			// debug!("{}", serde_json::to_string(&credit).unwrap());
 		}
 		true
 	}).build().unwrap();
