@@ -49,7 +49,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>
-				<div className='w-[800px] h-[600px] flex flex-col bg-[url("img/bg.png")] bg-cover rounded-[12px]'>
+				<div
+					className='w-[800px] h-[600px] flex flex-col bg-cover rounded-[12px]'
+					style={{ background: 'url(img/bg.png)', backgroundSize: 'cover' }}>
 					<NavBar />
 					<App />
 				</div>
