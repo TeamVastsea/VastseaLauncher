@@ -25,6 +25,8 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.0",
+    "@commitlint/config-conventional": "^17.7.0",
     "@tauri-apps/cli": "^1.4.0",
     "@types/node": "^18.7.10",
     "@types/react": "^18.0.15",
@@ -38,6 +40,7 @@
     "concurrently": "^8.2.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
     "json-server": "^0.17.3",
     "postcss": "^8.4.26",
     "skinview3d": "3.0.0-alpha.1",
