@@ -12,13 +12,13 @@ export default function NavBar(){
 		<div className="
 			flex w-full h-[30px] font-Instrument_sans text-white bg-[rgba(0,0,0,.25)] backdrop-blur-2lg
 			text-xs leading-1 items-center rounded-t-xl
-		" data-tauri-drag-region="">
+		" data-tauri-drag-region>
 			<div className='flex-grow-1 flex-shrink-0'>
-				<span className='ml-3'>Vastsea Launcher</span>
+				<span className='ml-3'>VASTSEA Launcher</span>
 			</div>
 			<div className='flex ml-auto mr-0'>
-				<img src='img/min.svg' className='cursor-pointer' onClick={onMin}  alt=''/>
-				<img src="img/close.svg" className='cursor-pointer' onClick={onClose}  alt=''/>
+				<img src='img/min.svg' className='cursor-pointer' onClick={onMin} />
+				<img src="img/close.svg" className='cursor-pointer' onClick={onClose} />
 			</div>
 		</div>
 	);
