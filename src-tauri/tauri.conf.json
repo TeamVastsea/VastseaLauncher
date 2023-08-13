@@ -20,7 +20,8 @@
 	  "window":{
 		"create": true,
 		"minimize": true,
-		"close": true
+		"close": true,
+		"startDragging": true
 	  },
 	  "http": {
 		"all": false,
