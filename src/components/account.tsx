@@ -7,12 +7,14 @@ import { appWindow } from '@tauri-apps/api/window';
 import { useAtom } from 'jotai';
 import { authAtom, profileAtom, tokenAtom } from '../main';
 import { useInfo, useWarning } from './common/toast';
+import { NavLink, useNavigate } from 'react-router-dom';
 export function Account(){
 	const [profile, setProfile] = useAtom(profileAtom);
 	const [, setToken] = useAtom(tokenAtom);
 	const [auth, setAuth] = useAtom(authAtom);
 	const [name] = useState(profile.mojang.user_name);
 	const [uuid] = useState(profile.mojang.uuid);
+	const navigation = useNavigate();
 	const login = async () => {
 		appWindow.once('auth_success', ({payload}: {payload: AuthCredentials})=>{
 			setToken(payload);
@@ -30,6 +32,9 @@ export function Account(){
 			useWarning(payload);
 		});
 		await invoke('auth_window_create');
+	};
+	const toSetting = () => {
+		navigation('/setting');
 	};
 	const NotLogin = () => (
 		<>
@@ -83,7 +88,7 @@ export function Account(){
 			<div className='mx-auto max-w-[172px] w-full flex justify-center p-3 bg-[#00A4EF] rounded-[10px]'>
 				<Button text='启动游戏' icon={<Play fill='#fff' />} shadow='md' className='rounded-r-none font-sans px-0 py-0 bg-transparent text-white '/>
 				<div className='w-px h-full bg-white mx-2'></div>
-				<Button icon={<Setting fill='#fff' />} shadow='md' className='rounded-l-none bg-transparent px-0 py-0'/>
+				<Button icon={<Setting fill='#fff' />} shadow='md' className='rounded-l-none bg-transparent px-0 py-0' onClick={toSetting}/>
 			</div>
 		</div>
 	);
