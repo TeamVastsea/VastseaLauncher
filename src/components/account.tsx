@@ -7,7 +7,7 @@ import { appWindow } from '@tauri-apps/api/window';
 import { useAtom } from 'jotai';
 import { authAtom, profileAtom, tokenAtom } from '../main';
 import { useInfo, useWarning } from './common/toast';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export function Account(){
 	const [profile, setProfile] = useAtom(profileAtom);
 	const [, setToken] = useAtom(tokenAtom);
@@ -16,11 +16,11 @@ export function Account(){
 	const [uuid] = useState(profile.mojang.uuid);
 	const navigation = useNavigate();
 	const login = async () => {
-		appWindow.once('auth_success', ({payload}: {payload: AuthCredentials})=>{
+		appWindow.once('auth_success', ({payload}: { payload: AuthCredentials }) => {
 			setToken(payload);
 			setAuth(true);
 			invoke<MojangProfile>('get_user_profile', {access_token: payload.access_token})
-				.then((mojangProfile)=>{
+				.then((mojangProfile) => {
 					setProfile({
 						mojang: mojangProfile,
 						vastsea: profile.vastsea
@@ -28,7 +28,7 @@ export function Account(){
 					useInfo('登陆成功');
 				});
 		});
-		appWindow.once('auth_fail', ({payload}: {payload: string})=>{
+		appWindow.once('auth_fail', ({payload}: { payload: string }) => {
 			useWarning(payload);
 		});
 		await invoke('auth_window_create');

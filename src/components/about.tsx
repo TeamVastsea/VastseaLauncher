@@ -6,7 +6,7 @@ export function About(){
 			name: 'UI设计',
 			children: [
 				{
-					name: '御坂秋生',
+					name: 'NiuBoss123',
 					href: 'https://www.niuboss123.com/'
 				},
 				{
@@ -45,7 +45,7 @@ export function About(){
 					href: 'https://github.com/SnowballXueQiu'
 				},
 				{
-					name: 'fastjim',
+					name: 'fast_Jim',
 					href: 'https://github.com/fastjim'
 				}
 			]
@@ -55,6 +55,10 @@ export function About(){
 		{
 			name: 'React',
 			href: 'https://react.dev/'
+		},
+		{
+			name: 'Vite.js',
+			href: 'https://vitejs.dev/'
 		},
 		{
 			name: 'Tauri',
@@ -83,6 +87,12 @@ export function About(){
 			</div>
 		);
 	};
+	
+	const currentTimeStamp: number = Date.now();
+	const establishedTimeStamp = 1632240000000;
+	const durationTimeStamp = currentTimeStamp - establishedTimeStamp;
+	const durationTime = Math.floor(durationTimeStamp / (1000 * 3600 * 24));
+	
 	return (
 		<>
 			<div className='mb-6'>
@@ -95,7 +105,7 @@ export function About(){
 					}
 				</div>
 				<div className='w-full break-words'>
-					<span className='text-sm leading-none text-white'>使用的开源软件</span>
+					<span className='text-sm leading-none text-white'>使用的开源框架</span>
 					<ul>
 						{
 							lib.map(({name, href})=>{
@@ -108,11 +118,15 @@ export function About(){
 				</div>
 				<div className='w-full break-words text-white text-sm leading-[normal]'>
 					<p className='break-words font-Noto_Sans_Thin font-normal'>
+						瀚海工艺-Vastsea 来到这个世界已经 {durationTime} 天{' '}
+						<a style={{ textDecoration: 'None', color: '#FF69B4' }}>❤</a>
+					</p>
+					<p className='break-words font-Noto_Sans_Thin font-normal'>
 						&quot;Minecraft&quot;以及&quot;我的世界&quot;为<a onClick={()=>open('https://www.microsoft.com/')} className='Noto_Sans_Thin underline cursor-pointer'>美国微软公司</a>的商标，本应用与微软公司没有从属关系。
 					</p>
 					<br />
 					<p className='break-words font-Noto_Sans_Thin font-normal'>
-						&copy; 2021-2023 瀚海工艺-Vastsea 保留所有权利
+						&copy; 2021-{new Date().getFullYear()} 瀚海工艺-Vastsea 保留所有权利
 					</p>
 				</div>
 			</div>
