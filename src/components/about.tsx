@@ -89,8 +89,9 @@ export function About(){
 	};
 	
 	const currentTimeStamp: number = Date.now();
-	const establishedTimeStamp = currentTimeStamp - 1632240000000;
-	const establishedTime = Math.floor(establishedTimeStamp / (1000 * 3600 * 24));
+	const establishedTimeStamp = 1632240000000;
+	const durationTimeStamp = currentTimeStamp - establishedTimeStamp;
+	const durationTime = Math.floor(durationTimeStamp / (1000 * 3600 * 24));
 	
 	return (
 		<>
@@ -117,7 +118,7 @@ export function About(){
 				</div>
 				<div className='w-full break-words text-white text-sm leading-[normal]'>
 					<p className='break-words font-Noto_Sans_Thin font-normal'>
-						瀚海工艺-Vastsea 来到这个世界已经 {establishedTime} 天{' '}
+						瀚海工艺-Vastsea 来到这个世界已经 {durationTime} 天{' '}
 						<a style={{ textDecoration: 'None', color: '#FF69B4' }}>❤</a>
 					</p>
 					<p className='break-words font-Noto_Sans_Thin font-normal'>

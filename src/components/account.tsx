@@ -7,8 +7,7 @@ import { appWindow } from '@tauri-apps/api/window';
 import { useAtom } from 'jotai';
 import { authAtom, profileAtom, tokenAtom } from '../main';
 import { useInfo, useWarning } from './common/toast';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export function Account(){
 	const [profile, setProfile] = useAtom(profileAtom);
 	const [, setToken] = useAtom(tokenAtom);
