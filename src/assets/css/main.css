@@ -38,6 +38,7 @@ html,body{
 	width: 800px;
 	height: 600px;
 	margin: auto;
+	user-select: none;
 }
 body{
 	overflow: overlay;
