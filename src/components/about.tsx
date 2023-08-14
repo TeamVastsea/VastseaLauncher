@@ -6,7 +6,7 @@ export function About(){
 			name: 'UI设计',
 			children: [
 				{
-					name: 'NiuBoss123',
+					name: '御坂秋生',
 					href: 'https://www.niuboss123.com/'
 				},
 				{
@@ -45,7 +45,7 @@ export function About(){
 					href: 'https://github.com/SnowballXueQiu'
 				},
 				{
-					name: 'fast_Jim',
+					name: 'fastjim',
 					href: 'https://github.com/fastjim'
 				}
 			]
