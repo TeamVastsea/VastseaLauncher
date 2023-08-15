@@ -3,6 +3,7 @@ import {open} from '@tauri-apps/api/shell';
 export function About(){
 	const staffs = [
 		{
+			id: 'design',
 			name: 'UI设计',
 			children: [
 				{
@@ -16,6 +17,7 @@ export function About(){
 			]
 		},
 		{
+			id: 'api',
 			name: '后端开发',
 			children: [
 				{
@@ -29,6 +31,7 @@ export function About(){
 			]
 		},
 		{
+			id: 'front',
 			name: '前端开发',
 			children: [
 				{
@@ -38,6 +41,7 @@ export function About(){
 			]
 		},
 		{
+			id: 'supervisor',
 			name: '开发监制',
 			children: [
 				{
@@ -65,21 +69,21 @@ export function About(){
 			href: 'https://tauri.app/'
 		}
 	];
-	const Staff = (props: {data: {name: string;children: {name: string;href: string;}[]}}) => {
+	const Staff = (props: {data: {id: string, name: string;children: {name: string;href: string;}[]}}) => {
 		const {data} = props;
 		return (
-			<div className='font-Noto_Sans text-sm leading-none text-white'>
-				<p>
+			<div className='font-Noto_Sans text-sm leading-none text-white' key={data.id}>
+				<p key={data.name}>
 					{data.name}
 				</p>
 				{
 					(
 						data.children.map(({name, href}, idx) => {
 							return (
-								<>
-									<a onClick={()=>open(href)} className='text-white underline cursor-pointer' key={name}>{name}</a>
+								<div key={`${data.id}-${idx}`}>
+									<a onClick={()=>open(href)} className='text-white underline cursor-pointer'>{name}</a>
 									{idx !== data.children.length - 1 ? <span className='font-bold'>、</span> : null}
-								</>
+								</div>
 							);
 						})
 					)
@@ -101,7 +105,7 @@ export function About(){
 			<div className='w-full flex flex-col gap-6'>
 				<div className='grid grid-cols-2 gap-y-3'>
 					{
-						staffs.map(staff => <Staff data={staff} key={staff.name}/>)
+						staffs.map((staff, idx) => <Staff data={staff} key={idx}/>)
 					}
 				</div>
 				<div className='w-full break-words'>
@@ -110,7 +114,7 @@ export function About(){
 						{
 							lib.map(({name, href})=>{
 								return (<a key={name} onClick={()=>open(href)} className='cursor-pointer text-white text-sm leading-5 underline'>
-									<li>{name}</li>
+									<li key={name}>{name}</li>
 								</a>);
 							})
 						}
@@ -119,7 +123,7 @@ export function About(){
 				<div className='w-full break-words text-white text-sm leading-[normal]'>
 					<p className='break-words font-Noto_Sans_Thin font-normal'>
 						瀚海工艺-Vastsea 来到这个世界已经 {durationTime} 天{' '}
-						<a style={{ textDecoration: 'None', color: '#FF69B4' }}>❤</a>
+						<span className='text-[#ff69B4]'>❤</span>
 					</p>
 					<p className='break-words font-Noto_Sans_Thin font-normal'>
 						&quot;Minecraft&quot;以及&quot;我的世界&quot;为<a onClick={()=>open('https://www.microsoft.com/')} className='Noto_Sans_Thin underline cursor-pointer'>美国微软公司</a>的商标，本应用与微软公司没有从属关系。
