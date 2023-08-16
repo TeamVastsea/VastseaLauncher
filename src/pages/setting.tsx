@@ -53,13 +53,10 @@ export default function Setting(){
 			full_screen: fullScreen
 		});
 	};
-	const close = () => {
-		navigate(-1);
-	};
 	return (
 		<div className="w-full h-full px-[12px] pt-[11px] pb-[13px]">
 			<div className="relative flex w-full h-full rounded-xl bg-[rgba(255,255,255,0.15)] backdrop-blur-2lg overflow-hidden px-[30px] py-[15px]">
-				<Close stroke='#fff' strokeWidth='1' className='absolute top-[10px] right-[10px] cursor-pointer' onClick={close} />
+				<Close stroke='#fff' strokeWidth='1' className='absolute top-[10px] right-[10px] cursor-pointer' onClick={()=>navigate('/')} />
 				<div className='w-[385px] h-full flex-grow-0 flex-shrink-0 basis-auto'>
 					<div className='mb-6'>
 						<h1 className='text-3xl leading-0 text-white font-Noto_Sans font-bold'>设置</h1>
