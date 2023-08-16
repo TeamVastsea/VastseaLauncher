@@ -3,20 +3,25 @@ import { useDebounceFn} from 'ahooks';
 export default function MemorySelect(props: {setting:Partial<Setting>, onChange: (memory: number)=>void}){
 	const {setting, onChange} = props;
 	const [progress, setProgress] = useState(0);
-	const [memory, setMemory] = useState(setting.memory);
+	const MINIMUM_MEMORY = 4096;
+	const [memory, setMemory] = useState(setting.memory || MINIMUM_MEMORY);
+	const isNumber = (v: string) => !Number.isNaN(Number(v));
 	const onMemoryChange = useDebounceFn((e: React.FormEvent<HTMLDivElement>) => {
 		const ele = e.target as HTMLElement;
-		if (ele.innerText !== ''){
-			const memory = Math.min(
-				Number(ele.innerText),
-				setting.max_memory ?? Number.MAX_SAFE_INTEGER
-			);
+		if (isNumber(ele.innerText)){
+			const memory = Math.min(Number(ele.innerText), setting.max_memory ?? 0);
 			setMemory(memory);
 			onChange(memory);
-			document.execCommand('selectAll', false, '');
-			document.getSelection()?.collapseToEnd();
+		} else {
+			if (ele.innerText === ''){
+				setMemory(MINIMUM_MEMORY);
+				onChange(MINIMUM_MEMORY);
+			}
 		}
-	}, {wait: 100});
+		ele.innerText = memory.toString();
+		document.execCommand('selectAll', false, '');
+		document.getSelection()?.collapseToEnd();
+	}, {wait: 100, trailing: true, leading: true});
 	useEffect(()=>{
 		setProgress(
 			parseInt(
@@ -24,9 +29,6 @@ export default function MemorySelect(props: {setting:Partial<Setting>, onChange:
 			)
 		);
 	}, [memory, setting.max_memory, setting]);
-	useEffect(()=>{
-		setMemory(setting.memory);
-	}, [setting.memory]);
 	return (
 		<div className='flex flex-col items-start gap-1 text-white'>
 			<span className='font-Noto_Sans text-base leading-none'>运行内存</span>
