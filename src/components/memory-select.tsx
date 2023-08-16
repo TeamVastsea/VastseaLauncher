@@ -5,18 +5,18 @@ export default function MemorySelect(props: {setting:Partial<Setting>, onChange:
 	const [progress, setProgress] = useState(0);
 	const MINIMUM_MEMORY = 4096;
 	const [memory, setMemory] = useState(setting.memory || MINIMUM_MEMORY);
+	const isNumber = (v: string) => !Number.isNaN(Number(v));
 	const onMemoryChange = useDebounceFn((e: React.FormEvent<HTMLDivElement>) => {
 		const ele = e.target as HTMLElement;
-		if (ele.innerText !== ''){
-			const memory = Math.min(
-				Number(ele.innerText),
-				setting.max_memory ?? MINIMUM_MEMORY
-			);
+		if (isNumber(ele.innerText)){
+			const memory = Math.min(Number(ele.innerText), setting.max_memory ?? 0);
 			setMemory(memory);
 			onChange(memory);
 		} else {
-			setMemory(MINIMUM_MEMORY);
-			onChange(MINIMUM_MEMORY);
+			if (ele.innerText === ''){
+				setMemory(MINIMUM_MEMORY);
+				onChange(MINIMUM_MEMORY);
+			}
 		}
 		ele.innerText = memory.toString();
 		document.execCommand('selectAll', false, '');
@@ -29,9 +29,6 @@ export default function MemorySelect(props: {setting:Partial<Setting>, onChange:
 			)
 		);
 	}, [memory, setting.max_memory, setting]);
-	useEffect(()=>{
-		setMemory(setting.memory || MINIMUM_MEMORY);
-	}, [setting.memory]);
 	return (
 		<div className='flex flex-col items-start gap-1 text-white'>
 			<span className='font-Noto_Sans text-base leading-none'>运行内存</span>
