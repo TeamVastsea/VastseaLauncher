@@ -1,10 +1,15 @@
 use crate::{utils, user::setting::{Setting, Java}, log};
 use sysinfo::{System, SystemExt};
 use serde_json;
-use tauri::App;
+use tauri::{App, Manager};
 use regex::Regex;
 
 pub fn setup(app: &mut App) -> std::result::Result<(), Box<dyn std::error::Error>>{
+	#[cfg(debug_assertions)]
+    {
+      let window = app.get_window("main").unwrap();
+      window.open_devtools();
+    }
 	let cache_exists = match utils::fs::fold_exists(".", ".cache") {
 		Ok(status) => status,
 		Err(e) => {
