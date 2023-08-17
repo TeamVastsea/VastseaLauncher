@@ -21,10 +21,12 @@ export default function JavaSelect(props: {setting: Partial<Setting>, onAdd: (ja
 				}
 			]
 		}) as string;
-		const version = getVersion(select);
-		const exe = getExec(select);
-		if (version && exe){
-			onAdd({version,exe,path: select});
+		if (select){
+			const version = getVersion(select);
+			const exe = getExec(select);
+			if (version && exe){
+				onAdd({version,exe,path: select});
+			}
 		}
 	};
 	const selectJava = (path: string) => {
@@ -34,7 +36,9 @@ export default function JavaSelect(props: {setting: Partial<Setting>, onAdd: (ja
 		return (
 			<>
 				{setting['java']?.map((v,i) => <li onClick={()=>selectJava(v.path)} key={i} className='first:mt-[10px] font-Noto_Sans truncate'>{v.version} @ {v.path}</li>)}
-				<li className='font-Noto_Sans flex items-center content-center' onClick={addJava}>添加路径...</li>
+				{
+					setting['java']?.length && <li className='font-Noto_Sans flex items-center content-center' onClick={addJava}>添加路径...</li>
+				}
 			</>
 		);
 	};
@@ -51,8 +55,8 @@ export default function JavaSelect(props: {setting: Partial<Setting>, onAdd: (ja
 			<div className='
 						min-h-[36px] max-w-[350px] w-auto h-auto py-2 px-[10px]
 						rounded-md border-2 border-solid border-[rgba(255,255,255,0.5)] cursor-pointer
-						' onClick={()=>setExpand(!expand)}>
-				<div className='flex items-center gap-[10px]' onClick={() => setting['java']?.length ?? addJava()}>
+						' onClick={()=>setting['java']?.length && setExpand(!expand)}>
+				<div className='flex items-center gap-[10px]' onClick={() => !setting['java']?.length && addJava()}>
 					<div className='flex-grow-0 flex-shrink w-full overflow-hidden'>
 						{
 							setting['java']?.length ? <p className='truncate'>
