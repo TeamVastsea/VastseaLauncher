@@ -76,18 +76,19 @@ export function About(){
 				<p key={data.name}>
 					{data.name}
 				</p>
-				{
-					(
-						data.children.map(({name, href}, idx) => {
-							return (
-								<div key={`${data.id}-${idx}`}>
-									<a onClick={()=>open(href)} className='text-white underline cursor-pointer'>{name}</a>
-									{idx !== data.children.length - 1 ? <span className='font-bold'>、</span> : null}
-								</div>
-							);
-						})
-					)
-				}
+				<div className='flex flex-wrap gap-3'>
+					{
+						(
+							data.children.map(({name, href}, idx) => {
+								return (
+									<div key={`${data.id}-${idx}`}>
+										<a onClick={()=>open(href)} className='text-white cursor-pointer'>{name}</a>
+									</div>
+								);
+							})
+						)
+					}
+				</div>
 			</div>
 		);
 	};
@@ -103,7 +104,7 @@ export function About(){
 				<h1 className='text-3xl leading-0 text-white font-Noto_Sans font-bold'>关于</h1>
 			</div>
 			<div className='w-full flex flex-col gap-6'>
-				<div className='grid grid-cols-2 gap-y-3'>
+				<div className='grid grid-cols-[repeat(2,_auto)] gap-y-3'>
 					{
 						staffs.map((staff, idx) => <Staff data={staff} key={idx}/>)
 					}
